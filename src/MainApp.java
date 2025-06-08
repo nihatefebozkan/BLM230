@@ -32,7 +32,7 @@ public class MainApp {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
                 g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                GradientPaint gp = new GradientPaint(0, 0, new Color(179, 229, 252), 0, getHeight(), new Color(255, 255, 255));
+                GradientPaint gp = new GradientPaint(0, 0, new Color(30, 32, 34), 0, getHeight(), new Color(60, 63, 65));
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
             }
@@ -45,7 +45,7 @@ public class MainApp {
         titlePanel.setOpaque(false);
         JLabel titleLabel = new JLabel("Hamming SEC-DED Simülatörü", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Montserrat", Font.BOLD, 36));
-        titleLabel.setForeground(new Color(2, 136, 209)); // #0288D1
+        titleLabel.setForeground(new Color(236, 240, 241)); // Light gray for better contrast
         titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         titlePanel.add(titleLabel);
         mainPanel.add(titlePanel, BorderLayout.NORTH);
@@ -69,8 +69,9 @@ public class MainApp {
         styleLabel(bitLengthLabel);
         bitLengthCombo = new JComboBox<>(new String[]{"8 Bit", "16 Bit", "32 Bit"});
         bitLengthCombo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        bitLengthCombo.setBackground(Color.WHITE);
-        bitLengthCombo.setBorder(BorderFactory.createLineBorder(new Color(79, 195, 247), 1)); // #4FC3F7
+        bitLengthCombo.setBackground(new Color(45, 48, 50));
+        bitLengthCombo.setForeground(new Color(6, 0, 21));
+        bitLengthCombo.setBorder(BorderFactory.createLineBorder(new Color(88, 101, 242), 1)); // Indigo border
 
         // Bit uzunluğu değiştiğinde hata pozisyonlarını güncelle
         bitLengthCombo.addActionListener(e -> updateErrorPositions());
@@ -80,10 +81,12 @@ public class MainApp {
         styleLabel(dataLabel);
         dataInput = new JTextField(20);
         dataInput.setFont(new Font("Consolas", Font.PLAIN, 16));
-        dataInput.setBackground(Color.WHITE);
-        dataInput.setBorder(BorderFactory.createLineBorder(new Color(79, 195, 247), 1));
+        dataInput.setBackground(new Color(45, 48, 50));
+        dataInput.setForeground(new Color(236, 240, 241));
+        dataInput.setCaretColor(new Color(236, 240, 241));
+        dataInput.setBorder(BorderFactory.createLineBorder(new Color(88, 101, 242), 1));
 
-        // JTextField'a karakter sınırı eklemek için DocumentFilter
+        // karakter sınırı
         AbstractDocument document = (AbstractDocument) dataInput.getDocument();
         document.setDocumentFilter(new DocumentFilter() {
             @Override
@@ -107,15 +110,16 @@ public class MainApp {
             }
         });
 
-        // Hata pozisyonu
+        // hata pozisyonu
         JLabel errorPosLabel = new JLabel("Hata Pozisyonu Seç:");
         styleLabel(errorPosLabel);
         errorPosCombo = new JComboBox<>();
         errorPosCombo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        errorPosCombo.setBackground(Color.WHITE);
-        errorPosCombo.setBorder(BorderFactory.createLineBorder(new Color(79, 195, 247), 1));
+        errorPosCombo.setBackground(new Color(45, 48, 50));
+        errorPosCombo.setForeground(new Color(6, 0, 21));
+        errorPosCombo.setBorder(BorderFactory.createLineBorder(new Color(88, 101, 242), 1));
 
-        // Butonlar
+        // butonlar
         JButton codeButton = new JButton("Kodla");
         styleButton(codeButton);
         JButton randomErrorButton = new JButton("Rastgele Hata Oluştur");
@@ -167,7 +171,7 @@ public class MainApp {
         styleOutputLabel(correctedCodeLabel);
         errorStatusLabel = new JLabel(" ");
         errorStatusLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        errorStatusLabel.setForeground(new Color(55, 71, 79)); // #37474F
+        errorStatusLabel.setForeground(new Color(236, 240, 241));
         bitPositionsLabel = new JLabel("Bit Pozisyonları: [p1, p2, d1, p4, d2, d3, d4, p8, d5, d6, d7, d8]");
         styleOutputLabel(bitPositionsLabel);
 
@@ -197,8 +201,8 @@ public class MainApp {
         JButton toggleDescriptionButton = new JButton("Uygulama Detayı İçin Tıklayın  ▼ ");
         styleButton(toggleDescriptionButton);
         descriptionPanel = new JPanel(new BorderLayout());
-        descriptionPanel.setBackground(new Color(227, 242, 253)); // #E3F2FD
-        descriptionPanel.setBorder(BorderFactory.createLineBorder(new Color(2, 136, 209), 2));
+        descriptionPanel.setBackground(new Color(45, 48, 50));
+        descriptionPanel.setBorder(BorderFactory.createLineBorder(new Color(88, 101, 242), 2));
         JTextArea description = new JTextArea(
             "Bu uygulama, Hamming SEC-DED (Single Error Correction - Double Error Detection) simülatörüdür. " +
             "Kullanıcılar, 8, 16 veya 32 bitlik veri girişi yaparak Hamming kodu oluşturabilir, rastgele veya belirli bir pozisyonda hata ekleyebilir, " +
@@ -207,10 +211,11 @@ public class MainApp {
         );
         description.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         description.setEditable(false);
-        description.setBackground(new Color(227, 242, 253));
+        description.setBackground(new Color(45, 48, 50));
+        description.setForeground(new Color(236, 240, 241));
         description.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        description.setLineWrap(true); // Metni otomatik satır sonuna sığdır
-        description.setWrapStyleWord(true); // Kelimeleri bölmeden satır sonuna sığdır
+        description.setLineWrap(true);
+        description.setWrapStyleWord(true);
         descriptionPanel.add(description, BorderLayout.CENTER);
         descriptionPanel.setVisible(false);
         descriptionContainer.add(toggleDescriptionButton, BorderLayout.NORTH);
@@ -291,8 +296,8 @@ public class MainApp {
 
     private void styleButton(JButton button) {
         button.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        button.setBackground(new Color(38, 198, 218)); // #26C6DA
-        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(88, 101, 242)); // Indigo
+        button.setForeground(new Color(236, 240, 241));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -300,28 +305,28 @@ public class MainApp {
         button.setBorderPainted(false);
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
-                button.setBackground(new Color(0, 172, 193)); // #00ACC1
+                button.setBackground(new Color(108, 122, 255)); // Lighter indigo
             }
             public void mouseExited(MouseEvent evt) {
-                button.setBackground(new Color(38, 198, 218));
+                button.setBackground(new Color(88, 101, 242));
             }
         });
     }
 
     private void styleLabel(JLabel label) {
         label.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        label.setForeground(new Color(55, 71, 79)); // #37474F
+        label.setForeground(new Color(236, 240, 241)); // Light gray
     }
 
     private void styleOutputLabel(JLabel label) {
         label.setFont(new Font("Consolas", Font.BOLD, 18));
-        label.setForeground(new Color(55, 71, 79));
+        label.setForeground(new Color(236, 240, 241));
     }
 
     private void showErrorMessage(String message) {
         JOptionPane optionPane = new JOptionPane(message, JOptionPane.ERROR_MESSAGE);
         JDialog dialog = optionPane.createDialog(frame, "Hata");
-        dialog.getContentPane().setBackground(new Color(255, 112, 67)); // #FF7043
+        dialog.getContentPane().setBackground(new Color(231, 76, 60)); // Red for error
         dialog.setVisible(true);
     }
 
@@ -330,12 +335,12 @@ public class MainApp {
         dataInput.setText("");
         dataInput.requestFocus();
         errorPosCombo.removeAllItems();
-        errorPosCombo.addItem(null); // Varsayılan olarak hiçbir şey seçili olmasın
+        errorPosCombo.addItem(null);
         int totalBits = HammingCode.getTotalLength(bitLength);
         for (int i = 1; i <= totalBits; i++) {
             errorPosCombo.addItem(i);
         }
-        errorPosCombo.setSelectedItem(null); // Varsayılan olarak hiçbir pozisyon seçili olsun
+        errorPosCombo.setSelectedItem(null);
         updateBitPositions(bitLength);
     }
 
@@ -355,7 +360,6 @@ public class MainApp {
             }
             counter++;
             if (i < totalBits) positions.append(", ");
-            // Her 8 elemandan sonra alt satıra geç
             if (counter % 8 == 0 && i < totalBits) {
                 positions.append("<br>");
             }
