@@ -26,7 +26,7 @@ Java Swing kullanılarak geliştirilen bu proje, Hamming SEC-DED (Single Error C
 - Java Swing (Standart Java Kütüphanesi)
 
 ## Demo Videosu
-### <a href = "https://youtu.be/8oMhTuODT_0?si=Q4cjDLY6GRULRV9l"> Video için Tıklayın </a>
+### <a href = "https://youtu.be/8oMhTuODT_0?si=Q4cjDLY6GRULRV9l" target = "_blank"> Video için Tıklayın </a>
 
 ## Kaynaklar
 - [ChatGPT](https://chat.openai.com)
